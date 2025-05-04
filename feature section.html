@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Section</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="feature.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .features {
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .features h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .features p {
+            margin: 0 auto;
+            max-width: 600px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 250px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Back Button */
+        .back-button {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <h1>Welcome to Our E-Commerce Features</h1>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <p>Discover how our solution transforms the push notification experience for e-commerce apps.</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>AI-Driven Personalization</h3>
+                    <p>Leverage AI to send only relevant updates tailored to user preferences.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Adaptive Notification Frequency</h3>
+                    <p>Adjust notification frequency dynamically based on user behavior.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>User Control and Customization</h3>
+                    <p>Allow users to fully customize their notification preferences.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Detailed Analytics Dashboard</h3>
+                    <p>Provide businesses with insights into user engagement and interaction rates.</p>
+                </div>
+            </div>
+        </div>
+        <div class="back-button">
+            <button onclick="location.href='headsection.html'" class="btn-primary">Back to Header</button>
+        </div>
+    </section>
+
+    <script>
+        function goToHeader() {
+            // Smooth scroll to the header section
+            document.getElementById('header').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+     <script src="feture.js"></script>
+</body>
+</html>

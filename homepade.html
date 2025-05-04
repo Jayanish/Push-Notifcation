@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding: 50px;
+            background-color: #62ecec;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .btn-primary, .btn-back {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-primary:hover, .btn-back:hover {
+            background-color: #0056b3;
+        }
+        .features {
+            padding: 50px;
+            text-align: center;
+        }
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .feature-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .feature {
+            flex: 1;
+            max-width: 300px;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 1rem;
+            color: #555;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #555;
+        }
+        .btn-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+        }
+        .btn-back-to-top:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Smart Notifications for E-Commerce</h1>
+        <p>Reduce notification fatigue and improve user engagement with AI-driven personalization.</p>
+        <button onclick="location.href='signup.html'" class="btn-primary">Get Started</button>
+    </header>
+
+    <section class="features">
+        <h2>Features</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>AI Personalization</h3>
+                <p>Send tailored notifications based on user preferences and behavior.</p>
+            </div>
+            <div class="feature">
+                <h3>Adaptive Frequency</h3>
+                <p>Automatically adjust notification timing for better engagement.</p>
+            </div>
+            <div class="feature">
+                <h3>User Control</h3>
+                <p>Allow users to customize notification settings easily.</p>
+            </div>
+        </div>
+        <button onclick="location.href='headsection.html'" class="btn-primary">Back to Header</button>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Notification Manager</p>
+    </footer>
+
+    <button onclick="scrollToTop()" class="btn-back-to-top">Back to Top</button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function scrollToHeader() {
+            document.querySelector('.header').scrollIntoView({ behavior: 'smooth' });
+        }
+        window.onscroll = function () {
+            const backToTopButton = document.querySelector('.btn-back-to-top');
+            if (document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

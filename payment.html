@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Payment & Address</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+         background: white;
+         padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        max-width: 600px; /* Increased from 400px */
+        width: 90%; /* Ensures responsiveness */
+        margin: auto;
+        color: #333;
+    }
+
+
+        h2 {
+            color: #4a47a3;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .payment-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: #ff4081;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #d81b60;
+        }
+
+        .back-btn {
+            background: #007bff;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Delivery Address</h2>
+
+        <div class="input-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your full name">
+        </div>
+
+        <div class="input-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+        </div>
+
+        <div class="input-group">
+            <label for="area">Area:</label>
+            <input type="text" id="area" placeholder="Enter area name">
+        </div>
+
+        <div class="input-group">
+            <label for="street">Street:</label>
+            <input type="text" id="street" placeholder="Enter street name">
+        </div>
+
+        <div class="input-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" placeholder="Enter city name">
+        </div>
+
+        <div class="input-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" placeholder="Enter state name">
+        </div>
+
+        <div class="input-group">
+            <label for="pin">PIN Code:</label>
+            <input type="number" id="pin" placeholder="Enter PIN code">
+        </div>
+
+        <h2>Payment Options</h2>
+        <div class="payment-btns">
+            <button class="btn" onclick="processPayment('UPI')">Pay with UPI</button>
+            <button class="btn" onclick="processPayment('Credit Card')">Pay with Credit Card</button>
+            <button class="btn" onclick="processPayment('Debit Card')">Pay with Debit Card</button>
+            <button class="btn" onclick="processPayment('Cash on Delivery')">Cash on Delivery</button>
+        </div>
+
+        <button class="btn back-btn" onclick="goBack()">Back to Cart</button>
+    </div>
+
+    <script>
+        function processPayment(method) {
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            let area = document.getElementById("area").value;
+            let street = document.getElementById("street").value;
+            let city = document.getElementById("city").value;
+            let state = document.getElementById("state").value;
+            let pin = document.getElementById("pin").value;
+
+            if (!name || !phone || !area || !street || !city || !state || !pin) {
+                alert("⚠️ Please fill in all address details before proceeding with payment!");
+                return;
+            }
+
+            alert(`✅ Payment method selected: ${method}\n📦 Delivering to:\n${name}, ${phone}\n${area}, ${street}, ${city}, ${state} - ${pin}`);
+        }
+
+        function goBack() {
+            window.location.href = "add to cart.html";
+        }
+    </script>
+
+</body>
+</html>

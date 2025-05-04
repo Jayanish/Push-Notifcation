@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Settings</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            margin: auto;
+            color: #333;
+        }
+
+        h2 {
+            color: #4a47a3;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .notification-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .notification-list li {
+            background: #e3f2fd;
+            color: #01579b;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: #ff4081;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 5px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #d81b60;
+        }
+
+        .disable-btn {
+            background: #ff1744;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.3s ease-in-out;
+        }
+
+        .disable-btn:hover {
+            background: #d50000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Notification Settings</h2>
+        <ul class="notification-list"></ul>
+
+        <div class="btn-container">
+            <a href="home.html" class="btn">Home</a>
+            <a href="add to cart.html" class="btn">Back to Cart</a>
+        </div>
+    </div>
+
+    <script>
+        let notifications = JSON.parse(localStorage.getItem("notifications")) || {};
+
+        function displayNotifications() {
+            const list = document.querySelector(".notification-list");
+            list.innerHTML = "";
+            let hasNotifications = false;
+
+            for (let item in notifications) {
+                if (notifications[item]) {
+                    list.innerHTML += `
+                        <li>
+                            ${item} notifications enabled
+                            <button class="disable-btn" onclick="disableNotification('${item}')">Disable</button>
+                        </li>`;
+                    hasNotifications = true;
+                }
+            }
+
+            if (!hasNotifications) {
+                list.innerHTML = "<li style='color: #888;'>No notifications enabled</li>";
+            }
+        }
+
+        function disableNotification(name) {
+            notifications[name] = false;
+            localStorage.setItem("notifications", JSON.stringify(notifications));
+
+            // ✅ Pop-up message with a stylish touch
+            alert(`🚫 ${name} notifications disabled!`);
+
+            displayNotifications();
+        }
+
+        displayNotifications();
+    </script>
+
+</body>
+</html>

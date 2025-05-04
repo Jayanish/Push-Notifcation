@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-container {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart-items li {
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-info {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .cart-items li button {
+            margin-left: 5px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .remove-btn:hover {
+            background: #c82333;
+        }
+
+        .notification-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .notification-btn.active {
+            background: #28a745;
+        }
+
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .checkout-btn, .back-btn, .notif-page-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .checkout-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        .checkout-btn:hover {
+            background: #218838;
+        }
+
+        .back-btn {
+            background: #007bff;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+
+        .notif-page-btn {
+            background: #ff9a9e;
+            color: white;
+        }
+
+        .notif-page-btn:hover {
+            background: #e77c7c;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cart-container">
+        <h2>Shopping Cart 🛒</h2>
+        <ul class="cart-items"></ul>
+        <p class="cart-total">Total: $0</p>
+        <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+        <button class="back-btn" onclick="goBack()">Back to Shop</button>
+        <button class="notif-page-btn" onclick="goToNotifications()">View Notifications</button>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let notifications = JSON.parse(localStorage.getItem("notifications")) || {}; 
+        const cartList = document.querySelector(".cart-items");
+        const cartTotal = document.querySelector(".cart-total");
+
+        function updateCart() {
+            cartList.innerHTML = "";
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const isNotified = notifications[item.name] || false;
+
+                cartList.innerHTML += `
+                    <li>
+                        <span class="item-info">${item.name} - $${item.price}</span>
+                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                        <button class="notification-btn ${isNotified ? 'active' : ''}" onclick="toggleNotification('${item.name}')">
+                            ${isNotified ? 'Disable Notification' : 'Enable Notification'}
+                        </button>
+                    </li>`;
+            });
+            cartTotal.textContent = `Total: $${total}`;
+            localStorage.setItem("cartTotal", total); // Save total to localStorage
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCart();
+        }
+
+        function toggleNotification(name) {
+            notifications[name] = !notifications[name];
+            localStorage.setItem("notifications", JSON.stringify(notifications));
+
+            alert(`${name} notifications ${notifications[name] ? "enabled" : "disabled"}!`);
+            updateCart();
+        }
+
+        function goToNotifications() {
+            window.location.href = "notification.html";
+        }
+
+        function goBack() {
+            window.location.href = "shop.html";
+        }
+
+        function proceedToPayment() {
+            if (cart.length === 0) {
+                alert("⚠️ Your cart is empty! Add some items before proceeding.");
+                return;
+            }
+            window.location.href = "payment.html";
+        }
+
+        updateCart();
+    </script>
+</body>
+</html>

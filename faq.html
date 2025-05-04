@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Frequently Asked Questions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background: #f3f3f3;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a11cb;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .faq-search {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #f9f9f9;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            font-size: 16px;
+            color: #555;
+            border-left: 3px solid #6a11cb;
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button class="back-btn" onclick="goToHeadSection()">← Back</button>
+    </div>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <input type="text" id="search" class="faq-search" placeholder="Search questions..." onkeyup="filterFAQ()">
+
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleAnswer(this)">
+                What is this platform about?
+                <div class="faq-answer">This platform helps users manage push notifications and enhance their e-commerce experience.</div>
+            </div>
+            <div class="faq-item" onclick="toggleAnswer(this)">
+                How do I sign up?
+                <div class="faq-answer">Click on the Sign-Up button, fill in your details, and create an account.</div>
+            </div>
+            <div class="faq-item" onclick="toggleAnswer(this)">
+                Is my data secure?
+                <div class="faq-answer">Yes, we follow industry-standard encryption and privacy policies to keep your data secure.</div>
+            </div>
+            <div class="faq-item" onclick="toggleAnswer(this)">
+                How can I reset my password?
+                <div class="faq-answer">Go to the login page, click on "Forgot Password", and follow the instructions.</div>
+            </div>
+            <div class="faq-item" onclick="toggleAnswer(this)">
+                Can I delete my account?
+                <div class="faq-answer">Yes, contact our support team at <a href="contact.html">support@example.com</a> to request account deletion.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; <span id="year"></span> E-Commerce Push Notification Manager. All Rights Reserved.
+    </div>
+
+    <script>
+        function goToHeadSection() {
+            window.location.href = "headsection.html"; // Redirect to the header section page
+        }
+
+        function toggleAnswer(element) {
+            let answer = element.querySelector(".faq-answer");
+            answer.style.display = (answer.style.display === "block") ? "none" : "block";
+        }
+
+        function filterFAQ() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let faqItems = document.querySelectorAll(".faq-item");
+
+            faqItems.forEach(item => {
+                let question = item.textContent.toLowerCase();
+                item.style.display = question.includes(input) ? "block" : "none";
+            });
+        }
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

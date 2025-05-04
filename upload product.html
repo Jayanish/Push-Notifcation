@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Product</title>
+    <link rel="stylesheet" href="upload.css">
+    <style>
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">Welcome : Flipkart</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="notification.html">Push Notification</a></li>
+                    <li><a href="shop.html">Shop</a></li>  <!-- Shop Button -->
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="upload-section">
+        <h2>Upload a New Product</h2>
+        <form id="product-form">
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" required>
+
+            <label for="product-description">Product Description:</label>
+            <textarea id="product-description" required></textarea>
+
+            <label for="product-price">Product Price ($):</label>
+            <input type="number" id="product-price" required>
+
+            <label for="product-discount-price">Discount Price ($):</label>
+            <input type="number" id="product-discount-price" required>
+
+            <label for="product-image">Product Image:</label>
+            <input type="file" id="product-image" accept="image/*" required>
+
+            <button type="submit">Upload Product</button>
+        </form>
+    </section>
+
+    <!-- Admin Product List -->
+    <section class="product-list">
+        <h2>Manage Uploaded Products</h2>
+        <div id="admin-product-list"></div>
+    </section>
+
+    <!-- Popup Message -->
+    <div id="popup" class="popup">Product added successfully in Shop!</div>
+
+    <script>
+        document.getElementById("product-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("product-name").value;
+            const description = document.getElementById("product-description").value;
+            const price = document.getElementById("product-price").value;
+            const discountPrice = document.getElementById("product-discount-price").value;
+            const imageInput = document.getElementById("product-image");
+
+            if (imageInput.files.length === 0) {
+                alert("Please select an image!");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imageUrl = e.target.result;
+                const product = { name, description, price, discountPrice, imageUrl };
+                let products = JSON.parse(localStorage.getItem("products")) || [];
+                products.push(product);
+                localStorage.setItem("products", JSON.stringify(products));
+                displayProducts();
+                
+                // Show popup
+                showPopup();
+            };
+            reader.readAsDataURL(imageInput.files[0]);
+        });
+
+        function displayProducts() {
+            const productContainer = document.getElementById("admin-product-list");
+            productContainer.innerHTML = "";
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+            products.forEach((product, index) => {
+                const productDiv = document.createElement("div");
+                productDiv.classList.add("product-card");
+                productDiv.innerHTML = `
+                    <img src="${product.imageUrl}" alt="${product.name}" width="100">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p class="price">$${product.price} <span class="discount">$${product.discountPrice}</span></p>
+                    <button onclick="deleteProduct(${index})">Delete</button>
+                `;
+                productContainer.appendChild(productDiv);
+            });
+        }
+
+        function deleteProduct(index) {
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            products.splice(index, 1);
+            localStorage.setItem("products", JSON.stringify(products));
+            displayProducts();
+        }
+
+        function showPopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000);
+        }
+
+        document.addEventListener("DOMContentLoaded", displayProducts);
+    </script>
+</body>
+</html>

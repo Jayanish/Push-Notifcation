@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Best Deals</title>
+    <style>
+        /* General Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cart Button */
+        .cart-btn {
+            background-color: #ffc107;
+            color: #333;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .cart-btn:hover {
+            background-color: #e0a800;
+        }
+
+        /* Main Content */
+        .shop-container {
+            flex: 1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .shop-container h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .discount {
+            color: red;
+            font-size: 14px;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        .product-card button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Shop</h1>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="home.html">Shopping</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="logout.html">Profile</a>
+        </nav>
+        <button class="cart-btn" onclick="goToCart()">🛒 View Cart</button>
+    </header>
+
+    <!-- Shop Section -->
+    <div class="shop-container">
+        <h2>Best Deals Available!</h2>
+        <p>Shop the best products with amazing discounts!</p>
+        
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="phone.jpeg" alt="Product 1">
+                <h3>Smartphone</h3>
+                <p>Latest model with high performance and great battery life.</p>
+                <p class="price">$599 <span class="discount">$699</span></p>
+                <button onclick="addToCart('Smartphone', 599)">Add To Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="wireless.jpeg" alt="Product 2">
+                <h3>Wireless Headphones</h3>
+                <p>Noise-canceling headphones with crystal-clear sound.</p>
+                <p class="price">$129 <span class="discount">$159</span></p>
+                <button onclick="addToCart('Wireless Headphones', 129)">Add To Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="smartwatch.jpeg" alt="Product 3">
+                <h3>Smartwatch</h3>
+                <p>Track your fitness and notifications in style.</p>
+                <p class="price">$199 <span class="discount">$249</span></p>
+                <button onclick="addToCart('Smartwatch', 199)">Add To Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="laptop.jpeg" alt="Product 4">
+                <h3>Laptop</h3>
+                <p>A laptop is a portable, battery-powered personal computer designed for ease of use and transport, featuring a screen, keyboard, and touchpad.</p>
+                <p class="price">$1599 <span class="discount">$1999</span></p>
+                <button onclick="addToCart('Smartwatch', 1599)">Add To Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="speakers.jpeg" alt="Product 5">
+                <h3>Bluetooth Speakers</h3>
+                <p>Bluetooth speakers are devices that play audio wirelessly using Bluetooth technology. </p>
+                <p class="price">$299 <span class="discount">$349</span></p>
+                <button onclick="addToCart('Smartwatch', 299)">Add To Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="gaming.jpeg" alt="Product 6">
+                <h3>Gaming Console</h3>
+                <p>A gaming console is a specialized computer designed for playing video games.</p>
+                <p class="price">$499 <span class="discount">$699</span></p>
+                <button onclick="addToCart('Smartwatch', 499)">Add To Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="face wash.jpeg" alt="Product 7">
+                <h3>Facewash</h3>
+                <p>Face wash is a gentle liquid soap that gives deep pore cleansing.</p>
+                <p class="price">$99 <span class="discount">$149</span></p>
+                <button onclick="addToCart('Smartwatch', 99)">Add To Cart</button>
+            </div>
+
+            <div class="product-grid" id="product-list">
+                <!-- Products will be loaded here dynamically -->
+            </div>
+            
+            <script>
+                function loadProducts() {
+                    const productList = document.getElementById("product-list");
+                    productList.innerHTML = ""; // Clear previous content
+            
+                    let products = JSON.parse(localStorage.getItem("products")) || [];
+            
+                    products.forEach((product, index) => {
+                        const productCard = document.createElement("div");
+                        productCard.classList.add("product-card");
+            
+                        productCard.innerHTML = `
+                            <img src="${product.imageUrl}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <p class="price">$${product.price} <span class="discount">$${product.discountPrice}</span></p>
+                            <button onclick="addToCart('${product.name}', ${product.price})">Add To Cart</button>
+                        `;
+            
+                        productList.appendChild(productCard);
+                    });
+                }
+            
+                // Call function to load products when page loads
+                document.addEventListener("DOMContentLoaded", loadProducts);
+            </script>
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Website. All Rights Reserved. | 
+            <a href="contact.html" style="color: white; text-decoration: underline;">Contact Us</a>
+        </p>
+    </footer>
+
+    <script>
+        function addToCart(productName, productPrice) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let existingProduct = cart.find(item => item.name === productName);
+            
+            if (existingProduct) {
+                alert(`${productName} is already in the cart!`);
+            } else {
+                cart.push({ name: productName, price: productPrice });
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert(`${productName} has been added to the cart!`);
+            }
+        }
+
+        function goToCart() {
+            window.location.href = "add to cart.html";
+        }
+    </script>
+</body>
+</html>

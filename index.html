@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Notifications - E-Commerce</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* General Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar ul li a:hover {
+            text-decoration: underline;
+            color: #ffdd57;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background-color: #28a745; 
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 5px solid #007bff;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Content Section */
+        main {
+            flex: 1; /* Pushes footer to bottom */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+
+        .content h2 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .footer-links li {
+            margin: 0 10px;
+        }
+
+        .footer-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #ffdd57;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffdd57;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Welcome : E-Commerce Platform</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Shopping</a></li>
+                    <li><a href="upload product.html">Upload Product</a></li>
+                    <li><a href="notification.html">Push Notification</a></li>
+                    <li><a href="logout.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Reduce the amount of push notifications required for e-commerce apps</h1>
+            <p>Best Proposition</p>
+        </section>
+
+        <section class="content">
+            <h2>Application Home Page</h2>
+            <p>This is the main content of your application.</p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">E-Commerce</div>
+            <ul class="footer-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Instagram">📷</a>
+            </div>
+        </div>
+        <p>&copy; 2025 e-commerce. All rights reserved.</p>
+    </footer>
+</body>
+</html>

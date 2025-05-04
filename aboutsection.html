@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Manager</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        p {
+            margin: 0 auto;
+            max-width: 800px;
+            color: #555;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .about-content, .about-image {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .features-content, .how-it-works-content, .contact-content {
+            margin-top: 20px;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #f9f9f9;
+        }
+
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .feature-item {
+            width: 30%;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .feature-item h3 {
+            color: #007bff;
+        }
+
+        .feature-details {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .feature-details.visible {
+            display: block;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Features</h2>
+        <div class="features-list">
+            <div class="feature-item">
+                <h3>Personalized Notifications</h3>
+                <p>Deliver notifications based on user preferences and behavior patterns.</p>
+                <button onclick="toggleDetails('details-1')">Learn More</button>
+                <div id="details-1" class="feature-details">
+                    <p>Personalized notifications use advanced technology to analyze user interactions, ensuring messages are timely and relevant.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>AI-Powered Insights</h3>
+                <p>Use AI to analyze and predict user needs for better targeting.</p>
+                <button onclick="toggleDetails('details-2')">Learn More</button>
+                <div id="details-2" class="feature-details">
+                    <p>Our AI-powered system provides actionable insights by learning from customer behaviors, helping businesses increase conversions.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>Seamless Integration</h3>
+                <p>Easily integrate with existing e-commerce platforms and apps.</p>
+                <button onclick="toggleDetails('details-3')">Learn More</button>
+                <div id="details-3" class="feature-details">
+                    <p>Integration is hassle-free, with support for popular platforms like Shopify, WooCommerce, and custom APIs.</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="location.href='headsection.html'" class="btn-primary">Back to Header</button>
+    </section>
+
+    <script>
+        function toggleDetails(detailId) {
+            const detailElement = document.getElementById(detailId);
+            detailElement.classList.toggle('visible');
+        }
+    </script>
+
+</body>
+</html>
